@@ -10,18 +10,37 @@ int main()
         int choix_joueur;
         int a=valeur_a_trouver;
         int b=choix_joueur;
+        int modeDuJeu;
         int NIVEAU_FACILE;
         int NIVEAU_MOYEN=25;
         int NIVEAU_DIFFICILE=10;
+        int SCORE=0;
         int i=0;
         int niveau;
-        printf("********* BIENVENUE DANS LE JEU PLUS OU MOINS *******\n\n");
+        printf("********* MENU PRINCIPAL DU JEU PLUS OU MOINS *******\n\n");
+        printf("Mode 1 joueur tapez 1\t Mode 2 joueurs tapez 2\n\nVotre choix :");
+        scanf("%d", &modeDuJeu);
+               printf("\n");
+                if(modeDuJeu==1)
+                {
+                  printf("JOUEUR 1:");
+                }
+                else
+                  printf("JOUEUR 2:");
+
+
         printf("########## VEILLEZ CHOISIR UN NIVEAU ##########\n\n");
         printf("1. NIVEAU FACILE\n\n");
         printf("2. NIVEAU MOYEN\n\n");
         printf("3. NIVEAU DIFFICILE\n\n");
         printf("VOTRE CHOIX:");
         scanf("%d",&niveau);
+        if(niveau==1)
+        {
+          printf("JOUEUR 1 COMMENCER:\n\n");
+        }
+        else
+         printf("JOUEUR 2 COMMENCER:\n\n");
 
         switch(niveau)
         {
@@ -30,12 +49,14 @@ int main()
                    {
                        while(a!=b)
                         {
+                        SCORE+=1;
                         printf("VEILLEZ CHOISIR UN NOMBRE ENTRE 1 ET 100 :\n");
                         scanf("%d",&b);
                         plus_moins(a,b);
                         }
                          if(a==b)
-                        printf("\n");break;
+                         printf("\n");
+                         break;
 
                    }
 
@@ -48,11 +69,14 @@ int main()
                         printf("VEILLEZ CHOISIR UN NOMBRE ENTRE 1 ET 100 :\n");
                         scanf("%d",&b);
                         plus_moins(a,b);
+                        if(a!=b)
+                        SCORE+=1;
                         if(i==NIVEAU_MOYEN)
                         {
                             printf(" PERDUE ! VOUS AVEZ EPUSER TOUS VOS ESSAI ,VOUS AVEZ PERDU !\n");
                             printf("LA BONNE REPONSE ETAIT : %d",a);
-                            printf("\n");break;
+                            printf("\n");
+                            break;
                         }
 
                 }
@@ -64,17 +88,20 @@ int main()
                 {       printf("VEILLEZ CHOISIR UN NOMBRE ENTRE 1 ET 100 :\n");
                         scanf("%d",&b);
                         plus_moins(a,b);
+                        if(a!=b)
+                        SCORE+=1;
                         if(j==NIVEAU_DIFFICILE)
                         {
                             printf(" PERDUE ! VOUS AVEZ EPUSER TOUS VOS ESSAI ,VOUS AVEZ PERDU !\n");
                             printf("LA BONNE REPONSE ETAIT : %d",a);
-                            printf("\n");break;
+                            printf("\n");
+                            break;
                         }
 
                 }
 
         }
-
+ printf("Vous avez fait %d tentatives",SCORE);
  return 0;
 }
 
